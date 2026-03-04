@@ -1,0 +1,25 @@
+# Neo4j / Database
+data/
+logs/
+import/
+plugins/
+*.db
+*.dump
+
+# Cypher / Query results
+*.csv
+*.json
+!cypher-shell/*.csv  # Keep scripts, ignore large data exports
+
+# Environment / Secrets
+.env
+neo4j-credentials.txt
+
+# VS Code
+.vscode/
+!.vscode/extensions.json
+*.code-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
