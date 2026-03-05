@@ -68,6 +68,7 @@ MATCH
   (a7:Artwork {name: "Piilossa"}),
   (a8:Artwork {name: "Look up, down and there"})
 
+
 //Which artist made which art 
 //HUOM! date( "YYYY-MM-DD" )
 CREATE
@@ -79,3 +80,13 @@ CREATE
   (a6)<-[:MADE {date: date("1955-01-21")}]-(martti),
   (a7)<-[:MADE {date: date("2021-06-08")}]-(mirja),
   (a8)<-[:MADE {date: date("2001-08-05")}]-(arthur),
+
+  //Which artwork is at which museum
+  (a1)-[:ON_DISPLAY]->(jkl),
+  (a2)-[:ON_DISPLAY]->(helsinki),
+  (a3)-[:ON_DISPLAY]->(oulu),
+  (a4)-[:ON_DISPLAY]->(jkl),
+  (a5)-[:ON_DISPLAY]->(jkl),
+  (a6)-[:ON_DISPLAY]->(jkl),
+  (a7)-[:ON_DISPLAY]->(oulu),
+  (a8)-[:ON_DISPLAY]->(helsinki),
