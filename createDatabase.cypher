@@ -11,7 +11,7 @@ CREATE
   (:Artist {name: "Mirja Kaunonen", bornYear: 1991, nationality:"Finnish", specialization: "Sculpting"}),
   (:Artist {name: "Lilja Heinonen", bornYear: 1973, nationality:"Finnish", specialization: "Oilpainting"}),
   (:Artist {name: "Martti Savo", bornYear: 1899, deathYear: 1987, nationality:"Finnish"}),
-  (:Artist {name: "Arthur Cooper"}, bornYear: 1985, nationality:"American", specialization: "Painting");
+  (:Artist {name: "Arthur Cooper", bornYear: 1985, nationality:"American", specialization: "Painting"});
 
 // ---- MUSEUMS ----
 
@@ -47,18 +47,15 @@ CREATE
 //Match artists, museums and artwork. This is simply so that the create querys have ; at the end. I made it this way so it actually creates everything before we start mathcing for the relationships to work
 
 MATCH 
-  //Artists
   (mirja:Artist {name:"Mirja Kaunonen"}),
   (lilja:Artist {name: "Lilja Heinonen"}),
   (martti:Artist {name: "Martti Savo"}),
   (arthur:Artist {name: "Arthur Cooper"}),
 
-  //Museums
   (helsinki:Museum {name: "Helsingin kauounkimuseo"}),
   (jkl:Museum {name: "Jyväskylän taidemuseo"}),
   (oulu:Museum {name: "Oulun museo"}),
 
-  //Artwork
   (a1:Artwork {name: "Kaupungin yö"}),
   (a2:Artwork {name: "Flower beyond Mountain"}),
   (a3:Artwork {name: "Alone"}),
@@ -69,8 +66,7 @@ MATCH
   (a8:Artwork {name: "Look up, down and there"})
 
 
-//Which artist made which art 
-//HUOM! date( "YYYY-MM-DD" )
+
 CREATE
   (a1)<-[:MADE {date: date("2016-07-06")}]-(lilja),
   (a2)<-[:MADE {date: date("1999-04-03")}]-(arthur),
@@ -81,7 +77,7 @@ CREATE
   (a7)<-[:MADE {date: date("2021-06-08")}]-(mirja),
   (a8)<-[:MADE {date: date("2001-08-05")}]-(arthur),
 
-  //Which artwork is at which museum
+  
   (a1)-[:ON_DISPLAY]->(jkl),
   (a2)-[:ON_DISPLAY]->(helsinki),
   (a3)-[:ON_DISPLAY]->(oulu),
@@ -89,4 +85,7 @@ CREATE
   (a5)-[:ON_DISPLAY]->(jkl),
   (a6)-[:ON_DISPLAY]->(jkl),
   (a7)-[:ON_DISPLAY]->(oulu),
-  (a8)-[:ON_DISPLAY]->(helsinki),
+  (a8)-[:ON_DISPLAY]->(helsinki)
+
+//Which artist made which art 
+//HUOM! date( "YYYY-MM-DD" )
