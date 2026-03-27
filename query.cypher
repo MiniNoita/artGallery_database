@@ -36,7 +36,13 @@ RETURN aw.name AS Name, aw.type AS type;
 
 //7. What art pieces have been made before year 2000?
 
+MATCH (aw:Artwork)<-[made:MADE]-(a:Artist)
+WHERE made.date.year < 2000
+RETURN aw.name AS artName, made.date AS date;
+
 //8. What is oldest art piece in database? Who made it?
+
+
 
 // --------- EDITING EXISTING DATA -------------
 
