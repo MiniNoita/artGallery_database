@@ -21,7 +21,7 @@ CREATE
 CREATE
   (:Museum {name: "Helsingin kaupunkimuseo", entryFee:7}),
   (:Museum {name: "Jyväskylän taidemuseo", entryFee: 3}),
-  (:Museum {name: "Oulun museo"}); //this means tge entry is free
+  (:Museum {name: "Oulun museo", entryFee: 0});
 
 // ---- ARTS ----
 
