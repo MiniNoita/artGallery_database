@@ -12,6 +12,14 @@
 
 //5. How many art pieces are in each museum?
 
+//6. Which art pieces are paintings (aka type = "painting")
+
+//7. What art pieces have been made before year 2000?
+
+//8. What is oldest art piece in database? Who made it?
+
 // --------- EDITING EXISTING DATA -------------
 
 //1. "Helsingin kaupunkimuseo" entry fee goes up 2€
+
+//2. "Jyväskylä taidemuseo" entry fee goes down 1€
