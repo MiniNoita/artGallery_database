@@ -42,7 +42,15 @@ RETURN aw.name AS artName, made.date AS date;
 
 //8. What is oldest art piece in database? Who made it?
 
+MATCH (aw: Artwork)<-[made:MADE]-(a:Artist)
+RETURN aw.name AS artwork_name, made.date AS made_by, a.name AS artist
+ORDER BY made_by ASC
+LIMIT 1;
 
+//9. What artwork are in each museum and whose artwork is it?
+
+MATCH (a:Artist)-[:MADE]->(aw:Artwork)-[:ON_DISPLAY]->(m:Museum)
+RETURN m.name AS museum, collect(aw.name) AS artworks
 
 // --------- EDITING EXISTING DATA -------------
 
