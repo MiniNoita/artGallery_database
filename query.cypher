@@ -50,7 +50,8 @@ LIMIT 1;
 //9. What artwork are in each museum and whose artwork is it?
 
 MATCH (a:Artist)-[:MADE]->(aw:Artwork)-[:ON_DISPLAY]->(m:Museum)
-RETURN m.name AS museum, collect(aw.name) AS artworks
+WITH m , a, collect(aw.name) AS artworks
+RETURN m.name AS museum, {artist_name: a.name, art: artworks} AS artist_and_artworks;
 
 // --------- EDITING EXISTING DATA -------------
 
