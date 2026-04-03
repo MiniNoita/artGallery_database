@@ -51,10 +51,19 @@ LIMIT 1;
 
 MATCH (a:Artist)-[:MADE]->(aw:Artwork)-[:ON_DISPLAY]->(m:Museum)
 WITH m , a, collect(aw.name) AS artworks
-RETURN m.name AS museum, {artist_name: a.name, art: artworks} AS artist_and_artworks;
+WITH m, collect({artist_name: a.name, art: artworks}) AS artist_and_artworks
+RETURN m.name AS museum, artist_and_artworks;
 
 // --------- EDITING EXISTING DATA -------------
 
 //1. "Helsingin kaupunkimuseo" entry fee goes up 2€
 
-//2. "Jyväskylä taidemuseo" entry fee goes down 1€
+MATCH (m:Museum {name: "Helsingin kaupunkimuseo"})
+SET m += {entryFee: m.entryFee + 2}
+RETURN m, m.entryFee;
+
+//2. "Jyväskylän taidemuseo" entry fee goes down 1€
+
+MATCH (m:Museum {name: "Jyväskylän taidemuseo"})
+SET m += {entryFee: m.entryFee - 1}
+RETURN m, m.entryFee;
