@@ -4,7 +4,7 @@
 
 //Remember to delete database
 
-MATCH (n) DELETE n;
+MATCH (n) DETACH DELETE n;
 
 //These artists are made up
 CREATE 
